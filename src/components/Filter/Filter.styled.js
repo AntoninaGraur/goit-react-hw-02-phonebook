@@ -8,5 +8,6 @@ export const FilterInput = styled.input`
   padding: 10px 10px;
   border-radius: 20px;
   border: 1px solid green;
-  outline:transparent;
+  outline: transparent;
+  box-shadow: 4px 14px 30px -1px rgba(3, 76, 57, 0.51);
 `;

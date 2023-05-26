@@ -23,6 +23,8 @@ export const FormInput = styled.input`
   padding: 10px 10px;
   border-radius: 20px;
   border: 2px solid green;
+  box-shadow: 4px 14px 30px -1px rgba(3, 76, 57, 0.51);
+  outline: transparent;
 `;
 
 export const AddButton = styled.button`
