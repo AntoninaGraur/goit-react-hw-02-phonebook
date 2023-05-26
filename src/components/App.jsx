@@ -78,3 +78,11 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+//  stats: PropTypes.shape({
+//     followers: PropTypes.number.isRequired,
+//     views: PropTypes.number.isRequired,
+//     likes: PropTypes.number.isRequired,
+//   }),
