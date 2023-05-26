@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid';
 import ContactForm from './Form/FormField';
 import ContactList from './Contacts/ContactsFind';
 import Filter from './Filter/Filter';
+import Notiflix from 'notiflix';
 
 import { FormContainer, FormTitle } from './Form/FormField.styled';
 
@@ -24,10 +25,10 @@ class App extends Component {
     const existingContact = contacts.find((contact) => contact.name === name);
 
     if (existingContact) {
-      alert(`${name} is already in contacts.`);
+     Notiflix.Notify.warning(`${name} is already in contacts.`);
       return;
     }
-
+//  Notiflix.Report.warning('Title', 'Message', 'Button Text');
     const newContact = {
       id: nanoid(),
       name: name,
