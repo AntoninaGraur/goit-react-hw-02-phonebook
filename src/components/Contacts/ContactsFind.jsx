@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import { ContactMenu, DeleteBtn } from './ContactsFind.styled';
 
 const ContactList = ({ contacts, onDeleteContact }) => (
@@ -14,3 +15,4 @@ const ContactList = ({ contacts, onDeleteContact }) => (
 );
 
 export default ContactList;
+

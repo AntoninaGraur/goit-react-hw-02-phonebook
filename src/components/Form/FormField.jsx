@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 
 import { FormInput, AddButton } from './FormField.styled';
 
@@ -28,6 +28,7 @@ class ContactForm extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
+        <p>Name</p>
         <FormInput
           type="text"
           name="name"
@@ -37,6 +38,7 @@ class ContactForm extends Component {
           value={name}
           onChange={this.handleChange}
         />
+        <p>Number</p>
         <FormInput
           type="tel"
           name="number"
@@ -53,3 +55,8 @@ class ContactForm extends Component {
 }
 
 export default ContactForm;
+
+ContactForm.propTypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired
+}
