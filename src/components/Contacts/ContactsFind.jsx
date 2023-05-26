@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ContactList extends Component {
-  render() {
-    const { contacts } = this.props;
+import { ContactMenu, DeleteBtn } from './ContactsFind.styled';
 
-    return (
-      <ul>
-        {contacts.map((contact) => (
-          <li key={contact.id}>{contact.name}</li>
-        ))}
-      </ul>
-    );
-  }
-}
+const ContactList = ({ contacts, onDeleteContact }) => (
+  <ContactMenu>
+    {contacts.map((contact) => (
+      <li key={contact.id}>
+        {contact.name}  :  {contact.number}
+        <DeleteBtn onClick={() => onDeleteContact(contact.id)}>Delete</DeleteBtn>
+      </li>
+    ))}
+  </ContactMenu>
+);
 
 export default ContactList;

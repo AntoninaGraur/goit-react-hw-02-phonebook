@@ -1,47 +1,52 @@
 import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
+
+
+import { FormInput, AddButton } from './FormField.styled';
 
 class ContactForm extends Component {
   state = {
     name: '',
+    number: ''
   };
 
-  handleChange = e => {
-    this.setState({ name: e.target.value });
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    const { name } = this.state;
-    if (name.trim() === '') {
-      return;
-    }
-    const contact = {
-      id: nanoid(),
-      name: name,
-    };
-    this.props.addContact(contact);
-    this.setState({ name: '' });
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { name, number } = this.state;
+
+    this.props.onAddContact(name, number);
+
+    this.setState({ name: '', number: '' });
   };
 
   render() {
-    const { name } = this.state;
+    const { name, number } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <input
+        <FormInput
           type="text"
           name="name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
           value={name}
           onChange={this.handleChange}
         />
-        <input
+        <FormInput
           type="tel"
           name="number"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
+          value={number}
+          onChange={this.handleChange}
         />
-        <button type="submit">Add Contact</button>
+        <AddButton type="submit">Add Contact</AddButton>
       </form>
     );
   }
