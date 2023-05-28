@@ -20,15 +20,20 @@ class App extends Component {
     filter: ''
   };
 
-  addContact = (name, number) => {
-    const { contacts } = this.state;
-    const existingContact = contacts.find((contact) => contact.name === name);
+ addContact = (name, number) => {
+  const { contacts } = this.state;
+  const existingContact = contacts.find((contact) =>
+    contact.name.toLowerCase() === name.toLowerCase()
+  );
 
-    if (existingContact) {
-     Notiflix.Notify.warning(`${name} is already in contacts.`);
-      return;
-    }
-//  Notiflix.Report.warning('Title', 'Message', 'Button Text');
+  if (existingContact) {
+    Notiflix.Notify.warning(`${name} is already in contacts.`);
+    return;
+  }
+
+
+
+
     const newContact = {
       id: nanoid(),
       name: name,
